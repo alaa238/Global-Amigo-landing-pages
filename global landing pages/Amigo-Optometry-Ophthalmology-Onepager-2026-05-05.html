@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amigo AI — Optometry &amp; Ophthalmology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            /* Core brand colors */
+            --orange:       #AA412A;
+            --orange-light: #C68277;
+            --orange-bg:    #F9F0ED;
+            --black:        #100F0F;
+            --white:        #FFFFFF;
+            --blue:         #083241;
+            --violet:       #222238;
+            --lilac:        #C5BACE;
+            --green:        #2C3827;
+
+            /* Warm grays */
+            --gray-1: #F1EAE7;
+            --gray-2: #D7D2D0;
+            --gray-3: #B3AEAC;
+            --gray-4: #969290;
+            --gray-5: #767270;
+            --gray-6: #575452;
+
+            /* Semantic */
+            --text-primary:   var(--black);
+            --text-secondary: var(--gray-6);
+            --text-muted:     var(--gray-4);
+            --border:         var(--gray-2);
+            --bg-page:        var(--white);
+            --bg-warm:        var(--gray-1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-page);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* ── Header ── */
+        header {
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border);
+            background: var(--white);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-wordmark {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: -0.01em;
+        }
+
+        .logo-wordmark span {
+            color: var(--orange);
+        }
+
+        .logo-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--orange);
+            border-radius: 50%;
+            margin-left: 2px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-bottom: 3px;
+        }
+
+        .header-eyebrow {
+            font-family: 'Geist Mono', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--orange);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: 1px solid var(--orange-light);
+            background: var(--orange-bg);
+            padding: 5px 12px;
+            border-radius: 4px;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            background: var(--blue);
+            padding: 60px 0 52px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; right: 0;
+            width: 340px; height: 340px;
+            background: radial-gradient(circle at bottom right, rgba(170,65,42,0.18) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Geist Mono', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--lilac);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            line-height: 1.18;
+            color: var(--white);
+            margin-bottom: 18px;
+            letter-spacing: -0.02em;
+            max-width: 580px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--orange-light);
+        }
+
+        .hero-sub {
+            font-size: 0.97rem;
+            color: rgba(255,255,255,0.65);
+            max-width: 560px;
+            line-height: 1.75;
+        }
+
+        /* ── Metrics strip ── */
+        .metrics-strip {
+            background: var(--orange);
+            padding: 0;
+        }
+
+        .metrics-inner {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        .metric-cell {
+            padding: 24px 16px;
+            text-align: center;
+            border-right: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .metric-cell:last-child { border-right: none; }
+
+        .metric-value {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .metric-label {
+            font-size: 0.68rem;
+            color: rgba(255,255,255,0.72);
+            line-height: 1.45;
+            font-weight: 400;
+        }
+
+        /* ── Section ── */
+        .section-wrap {
+            padding: 52px 0 0;
+        }
+
+        .section-wrap + .section-wrap {
+            padding-top: 48px;
+        }
+
+        .section-eyebrow {
+            font-family: 'Geist Mono', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--orange);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 10px;
+            letter-spacing: -0.015em;
+            line-height: 1.25;
+        }
+
+        .section-desc {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin-bottom: 24px;
+            line-height: 1.75;
+        }
+
+        /* ── Use case card ── */
+        .usecase-card {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--white);
+        }
+
+        .usecase-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--bg-warm);
+        }
+
+        .usecase-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .usecase-header-text h3 {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 3px;
+            line-height: 1.35;
+        }
+
+        .usecase-header-text p {
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 0.03em;
+        }
+
+        /* ── Workflow ── */
+        .workflow {
+            padding: 24px 24px 20px;
+            display: flex;
+            gap: 0;
+            background: var(--white);
+        }
+
+        .workflow-step {
+            flex: 1;
+            position: relative;
+            padding-right: 18px;
+        }
+
+        .workflow-step:last-child { padding-right: 0; }
+
+        .workflow-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            top: 6px;
+            right: 2px;
+            color: var(--gray-3);
+            font-size: 0.75rem;
+        }
+
+        .step-num {
+            width: 28px;
+            height: 28px;
+            background: var(--orange-bg);
+            border: 1.5px solid var(--orange-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: var(--orange);
+            margin-bottom: 10px;
+        }
+
+        .step-title {
+            font-size: 0.74rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .step-desc {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        /* ── Capabilities ── */
+        .divider { height: 1px; background: var(--border); margin: 0 24px; }
+
+        .capabilities {
+            padding: 18px 24px 22px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 32px;
+            background: var(--white);
+        }
+
+        .cap-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .cap-check {
+            color: var(--orange);
+            font-weight: 700;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* ── Trust bar ── */
+        .trust-bar {
+            margin-top: 48px;
+            background: var(--blue);
+            border-radius: 12px;
+            padding: 20px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .trust-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.65);
+            font-weight: 400;
+        }
+
+        .trust-dot {
+            width: 5px;
+            height: 5px;
+            background: var(--orange-light);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .trust-sep {
+            width: 1px;
+            height: 20px;
+            background: rgba(255,255,255,0.15);
+            flex-shrink: 0;
+        }
+
+        /* ── CTA ── */
+        .cta-section {
+            margin-top: 36px;
+            background: var(--bg-warm);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px 44px;
+            text-align: center;
+        }
+
+        .cta-eyebrow {
+            font-family: 'Geist Mono', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--orange);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .cta-section h2 {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 1.55rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 10px;
+            letter-spacing: -0.015em;
+            line-height: 1.3;
+        }
+
+        .cta-section p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--orange);
+            color: var(--white);
+            font-size: 0.87rem;
+            font-weight: 600;
+            padding: 13px 34px;
+            border-radius: 6px;
+            text-decoration: none;
+            letter-spacing: 0.01em;
+            transition: background 0.2s ease, transform 0.15s ease;
+        }
+
+        .cta-btn:hover {
+            background: #913826;
+            transform: translateY(-1px);
+        }
+
+        .cta-contact {
+            margin-top: 14px;
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.73rem;
+            color: var(--text-muted);
+            letter-spacing: 0.03em;
+        }
+
+        /* ── Footer ── */
+        footer {
+            margin-top: 32px;
+            border-top: 1px solid var(--border);
+            padding: 20px 0 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-text {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        .footer-badges {
+            display: flex;
+            gap: 8px;
+        }
+
+        .badge {
+            font-family: 'Geist Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            background: var(--bg-warm);
+            border: 1px solid var(--border);
+            padding: 3px 8px;
+            border-radius: 4px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 720px) {
+            .hero h1 { font-size: 1.85rem; }
+            .metrics-inner { grid-template-columns: repeat(3, 1fr); }
+            .workflow { flex-direction: column; gap: 16px; }
+            .workflow-step { padding-right: 0; }
+            .workflow-step:not(:last-child)::after { display: none; }
+            .capabilities { grid-template-columns: 1fr; }
+            .trust-bar { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .trust-sep { display: none; }
+            .cta-section { padding: 28px 24px; }
+            footer { flex-direction: column; gap: 12px; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="container">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-wordmark">Amigo<span>.</span>ai</span>
+            </div>
+            <span class="header-eyebrow">Optometry &amp; Ophthalmology</span>
+        </div>
+    </div>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+    <div class="container">
+        <div class="hero-eyebrow">Clinical AI Agents for Eye Care</div>
+        <h1>Less Administration.<br><em>More Patients.</em></h1>
+        <p class="hero-sub">
+            Amigo deploys AI agents purpose-built for ophthalmology and optometry — automating patient intake, clinical documentation, and billing so your team focuses on care, not paperwork.
+        </p>
+    </div>
+</div>
+
+<!-- Metrics -->
+<div class="metrics-strip">
+    <div class="metrics-inner container" style="padding-left:32px;padding-right:32px;">
+        <div class="metric-cell">
+            <div class="metric-value">35%</div>
+            <div class="metric-label">Reduction in no-shows &amp; late cancellations</div>
+        </div>
+        <div class="metric-cell">
+            <div class="metric-value">8 min</div>
+            <div class="metric-label">Saved per patient on intake prep</div>
+        </div>
+        <div class="metric-cell">
+            <div class="metric-value">6 hrs</div>
+            <div class="metric-label">Admin time returned to your practice daily</div>
+        </div>
+        <div class="metric-cell">
+            <div class="metric-value">1,500+</div>
+            <div class="metric-label">Hours saved per practice annually</div>
+        </div>
+        <div class="metric-cell">
+            <div class="metric-value">+20</div>
+            <div class="metric-label">Additional patients seen per month</div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- Use Case 1 -->
+    <div class="section-wrap">
+        <div class="section-eyebrow">Use Case 01</div>
+        <h2 class="section-title">Pre-Visit Intake &amp; Preparation</h2>
+        <p class="section-desc">
+            Amigo's intake agent engages patients before they arrive — capturing clinical history, analyzing referral letters, and delivering a complete summary to the clinician and EHR before the patient walks through the door.
+        </p>
+
+        <div class="usecase-card">
+            <div class="usecase-header">
+                <div class="usecase-icon">👁️</div>
+                <div class="usecase-header-text">
+                    <h3>From Appointment Confirmation to Clinician-Ready — Automatically</h3>
+                    <p>Triggered at booking · Asynchronous patient completion · Supports 100+ languages</p>
+                </div>
+            </div>
+
+            <div class="workflow">
+                <div class="workflow-step">
+                    <div class="step-num">01</div>
+                    <div class="step-title">Patient Engagement</div>
+                    <div class="step-desc">Intake link delivered via SMS or email at appointment confirmation</div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-num">02</div>
+                    <div class="step-title">History Capture</div>
+                    <div class="step-desc">Chief complaint, medication list, allergies, and ocular disease history collected</div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-num">03</div>
+                    <div class="step-title">Referral Analysis</div>
+                    <div class="step-desc">Referral letter parsed; key clinical findings and diagnoses extracted</div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-num">04</div>
+                    <div class="step-title">EHR Push</div>
+                    <div class="step-desc">Completed intake summary delivered to the clinician and EHR pre-visit</div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-num">05</div>
+                    <div class="step-title">Patient Prep</div>
+                    <div class="step-desc">What to bring, what to expect — reducing no-shows and day-of cancellations</div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="capabilities">
+                <div class="cap-item"><span class="cap-check">✓</span> Structured intake: chief complaint, medications, allergies, eye disease history</div>
+                <div class="cap-item"><span class="cap-check">✓</span> Automated referral letter parsing with clinical summary generation</div>
+                <div class="cap-item"><span class="cap-check">✓</span> Completed note pushed directly to Epic, Oracle Health, or Athenahealth</div>
+                <div class="cap-item"><span class="cap-check">✓</span> Patient prep messaging that reduces no-shows and same-day cancellations</div>
+                <div class="cap-item"><span class="cap-check">✓</span> High-risk cases flagged for priority clinician review before arrival</div>
+                <div class="cap-item"><span class="cap-check">✓</span> Front desk staff verify intake — they no longer collect from scratch</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Use Case 2 -->
+    <div class="section-wrap">
+        <div class="section-eyebrow">Use Case 02</div>
+        <h2 class="section-title">Medical Scribe &amp; Billing Automation</h2>
+        <p class="section-desc">
+            Amigo's scribe agent attends every encounter in real time — generating structured SOAP notes, ICD-10 diagnoses, and CPT codes as the visit unfolds. Clinicians review and sign. They no longer write.
+        </p>
+
+        <div class="usecase-card">
+            <div class="usecase-header">
+                <div class="usecase-icon">📋</div>
+                <div class="usecase-header-text">
+                    <h3>Documentation That Writes Itself</h3>
+                    <p>Real-time transcription &amp; structuring · ICD-10 + CPT auto-coding · EHR-native delivery</p>
+                </div>
+            </div>
+
+            <div class="workflow">
+                <div class="workflow-step">
+                    <div class="step-num">01</div>
+                    <div class="step-title">Encounter Start</div>
+                    <div class="step-desc">Scribe agent activates at the start of each clinical encounter</div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-num">02</div>
+                    <div class="step-title">Real-Time Structuring</div>
+                    <div class="step-desc">Conversation transcribed and formatted as a subspecialty-aware SOAP note</div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-num">03</div>
+                    <div class="step-title">Code Suggestion</div>
+                    <div class="step-desc">ICD-10 diagnoses and CPT procedure codes auto-suggested from clinical context</div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-num">04</div>
+                    <div class="step-title">Draft Ready</div>
+                    <div class="step-desc">Complete note available for review before the patient leaves the room</div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-num">05</div>
+                    <div class="step-title">EHR Sign-Off</div>
+                    <div class="step-desc">Approved note pushed to EHR; billing queue updated automatically</div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="capabilities">
+                <div class="cap-item"><span class="cap-check">✓</span> Real-time SOAP note generation — subspecialty-aware for eye care workflows</div>
+                <div class="cap-item"><span class="cap-check">✓</span> Automated ICD-10 and CPT code suggestion from encounter context</div>
+                <div class="cap-item"><span class="cap-check">✓</span> Billing documentation complete before end of clinic session</div>
+                <div class="cap-item"><span class="cap-check">✓</span> Reduces provider documentation time by up to 60% per encounter</div>
+                <div class="cap-item"><span class="cap-check">✓</span> Follow-up instructions, referrals, and orders captured automatically</div>
+                <div class="cap-item"><span class="cap-check">✓</span> Clinicians review and sign — they never write from scratch again</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trust bar -->
+    <div class="trust-bar">
+        <div class="trust-group">
+            <div class="trust-item"><span class="trust-dot"></span>3M+ autonomous patient encounters</div>
+            <div class="trust-item"><span class="trust-dot"></span>Zero safety incidents on record</div>
+        </div>
+        <div class="trust-sep"></div>
+        <div class="trust-group">
+            <div class="trust-item"><span class="trust-dot"></span>Epic</div>
+            <div class="trust-item"><span class="trust-dot"></span>Oracle Health</div>
+            <div class="trust-item"><span class="trust-dot"></span>Athenahealth</div>
+        </div>
+        <div class="trust-sep"></div>
+        <div class="trust-group">
+            <div class="trust-item"><span class="trust-dot"></span>HIPAA Compliant</div>
+            <div class="trust-item"><span class="trust-dot"></span>SOC 2 Type II</div>
+            <div class="trust-item"><span class="trust-dot"></span>GDPR</div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+        <div class="cta-eyebrow">Next Step</div>
+        <h2>See Amigo in Your Practice</h2>
+        <p>A 20-minute conversation is all it takes to map Amigo's agents to your specific workflows and patient population.</p>
+        <a href="mailto:alaa@amigo.ai?subject=Amigo AI — Ophthalmology%2FOptometry Demo Request" class="cta-btn">Schedule a Call</a>
+        <div class="cta-contact">alaa@amigo.ai &nbsp;·&nbsp; amigo.ai</div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <span class="footer-text">© 2026 Amigo AI &nbsp;·&nbsp; All rights reserved</span>
+        <div class="footer-badges">
+            <span class="badge">HIPAA</span>
+            <span class="badge">SOC 2</span>
+            <span class="badge">GDPR</span>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>
