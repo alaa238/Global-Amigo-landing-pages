@@ -3,725 +3,352 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amigo AI — Optometry &amp; Ophthalmology</title>
+    <title>Amigo AI. Optometry &amp; Ophthalmology</title>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
         :root {
-            /* Core brand colors */
-            --orange:       #AA412A;
-            --orange-light: #C68277;
-            --orange-bg:    #F9F0ED;
-            --black:        #100F0F;
-            --white:        #FFFFFF;
-            --blue:         #083241;
-            --violet:       #222238;
-            --lilac:        #C5BACE;
-            --green:        #2C3827;
-
-            /* Warm grays */
-            --gray-1: #F1EAE7;
-            --gray-2: #D7D2D0;
-            --gray-3: #B3AEAC;
-            --gray-4: #969290;
-            --gray-5: #767270;
-            --gray-6: #575452;
-
-            /* Semantic */
-            --text-primary:   var(--black);
-            --text-secondary: var(--gray-6);
-            --text-muted:     var(--gray-4);
-            --border:         var(--gray-2);
-            --bg-page:        var(--white);
-            --bg-warm:        var(--gray-1);
+            --orange:        #AA412A;
+            --orange-light:  #C68277;
+            --orange-bg:     #F5EAE6;
+            --orange-border: #DDB8AE;
+            --black:         #100F0F;
+            --white:         #FFFFFF;
+            --lilac:         #C5BACE;
+            --gray-1:        #F1EAE7;
+            --gray-2:        #D7D2D0;
+            --gray-3:        #B3AEAC;
+            --gray-4:        #969290;
+            --gray-5:        #767270;
+            --gray-6:        #575452;
+            --text-primary:  #100F0F;
+            --text-secondary:#575452;
+            --text-muted:    #969290;
+            --border:        #D7D2D0;
         }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: #fff; color: var(--text-primary); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 940px; margin: 0 auto; padding: 0 36px; }
 
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg-page);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
+        /* HERO */
+        .hero { background: #fff; padding: 76px 0 60px; position: relative; overflow: hidden; }
+        .hero-logo { position: absolute; top: 28px; left: 36px; z-index: 10; }
+        .hero-logo img { height: 26px; width: auto; display: block; }
+        .hero-pp { position: absolute; top: 0; right: 0; width: 46%; height: 100%; display: flex; gap: 3px; pointer-events: none; opacity: 0.35; }
+        .pp-col { flex: 1; background: linear-gradient(180deg, var(--orange-bg) 0%, rgba(241,234,231,0.5) 45%, transparent 85%); border-radius: 2px 2px 0 0; }
+        .pp-col:nth-child(odd) { margin-top: 14px; }
+        .pp-col:nth-child(3n) { margin-top: 28px; opacity: 0.75; }
+        .pp-col:nth-child(5n) { margin-top: 6px; }
+        .hero::after { content: ''; position: absolute; top: 0; right: 0; width: 38%; height: 100%; background: linear-gradient(to left, var(--orange-bg) 0%, transparent 65%); pointer-events: none; }
+        .hero .container { position: relative; z-index: 2; }
+        .hero-eyebrow { font-family: 'Geist Mono', monospace; font-size: 10px; font-weight: 500; color: var(--orange); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 22px; display: flex; align-items: center; gap: 10px; }
+        .hero-eyebrow::before { content: ''; display: inline-block; width: 22px; height: 1.5px; background: var(--orange); flex-shrink: 0; }
+        .hero h1 { font-family: 'Merriweather', Georgia, serif; font-size: clamp(2.1rem, 4vw, 3rem); font-weight: 700; line-height: 1.15; color: var(--black); margin-bottom: 20px; letter-spacing: -0.025em; max-width: 600px; }
+        .hero h1 em { font-style: italic; color: var(--orange); font-weight: 400; }
+        .hero-sub { font-size: 0.97rem; color: var(--text-secondary); max-width: 540px; line-height: 1.75; margin-bottom: 34px; }
+        .hero-cta-row { display: flex; align-items: center; gap: 20px; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 6px; background: var(--orange); color: #fff; font-size: 0.86rem; font-weight: 600; padding: 12px 28px; border-radius: 6px; text-decoration: none; letter-spacing: 0.01em; transition: background 0.18s, transform 0.15s, box-shadow 0.18s; box-shadow: 0 1px 3px rgba(170,65,42,0.2), 0 4px 14px rgba(170,65,42,0.13); }
+        .btn-primary:hover { background: #923624; transform: translateY(-1px); box-shadow: 0 2px 6px rgba(170,65,42,0.25), 0 8px 20px rgba(170,65,42,0.16); }
+        .hero-footnote { font-family: 'Geist Mono', monospace; font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.03em; }
 
-        .container {
-            max-width: 920px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
-
-        /* ── Header ── */
-        header {
-            padding: 24px 0;
-            border-bottom: 1px solid var(--border);
-            background: var(--white);
-        }
-
-        .header-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-wordmark {
-            font-family: 'Merriweather', Georgia, serif;
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--black);
-            letter-spacing: -0.01em;
-        }
-
-        .logo-wordmark span {
-            color: var(--orange);
-        }
-
-        .logo-dot {
-            width: 7px;
-            height: 7px;
-            background: var(--orange);
-            border-radius: 50%;
-            margin-left: 2px;
-            display: inline-block;
-            vertical-align: middle;
-            margin-bottom: 3px;
-        }
-
-        .header-eyebrow {
-            font-family: 'Geist Mono', monospace;
-            font-size: 10px;
-            font-weight: 600;
-            color: var(--orange);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            border: 1px solid var(--orange-light);
-            background: var(--orange-bg);
-            padding: 5px 12px;
-            border-radius: 4px;
-        }
-
-        /* ── Hero ── */
-        .hero {
-            background: var(--blue);
-            padding: 60px 0 52px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0; right: 0;
-            width: 340px; height: 340px;
-            background: radial-gradient(circle at bottom right, rgba(170,65,42,0.18) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero-eyebrow {
-            font-family: 'Geist Mono', monospace;
-            font-size: 10px;
-            font-weight: 600;
-            color: var(--lilac);
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 {
-            font-family: 'Merriweather', Georgia, serif;
-            font-size: 2.6rem;
-            font-weight: 700;
-            line-height: 1.18;
-            color: var(--white);
-            margin-bottom: 18px;
-            letter-spacing: -0.02em;
-            max-width: 580px;
-        }
-
-        .hero h1 em {
-            font-style: italic;
-            color: var(--orange-light);
-        }
-
-        .hero-sub {
-            font-size: 0.97rem;
-            color: rgba(255,255,255,0.65);
-            max-width: 560px;
-            line-height: 1.75;
-        }
-
-        /* ── Metrics strip ── */
-        .metrics-strip {
-            background: var(--orange);
-            padding: 0;
-        }
-
-        .metrics-inner {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-        }
-
-        .metric-cell {
-            padding: 24px 16px;
-            text-align: center;
-            border-right: 1px solid rgba(255,255,255,0.15);
-        }
-
+        /* METRICS */
+        .metrics-strip { padding: 0 36px; }
+        .metrics-inner { display: grid; grid-template-columns: repeat(5, 1fr); max-width: 940px; margin: 0 auto; background: var(--gray-1); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+        .metric-cell { padding: 28px 16px; text-align: center; border-right: 1px solid var(--border); position: relative; }
         .metric-cell:last-child { border-right: none; }
+        .metric-cell::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 28px; height: 2px; background: var(--orange); border-radius: 0 0 2px 2px; }
+        .metric-value { font-family: 'Merriweather', Georgia, serif; font-size: 1.85rem; font-weight: 700; color: var(--orange); line-height: 1; margin-bottom: 8px; letter-spacing: -0.025em; }
+        .metric-label { font-size: 0.68rem; color: var(--text-muted); line-height: 1.5; }
 
-        .metric-value {
-            font-family: 'Merriweather', Georgia, serif;
-            font-size: 1.85rem;
-            font-weight: 700;
-            color: var(--white);
-            line-height: 1;
-            margin-bottom: 8px;
-            letter-spacing: -0.02em;
-        }
+        /* SECTIONS */
+        .section-wrap { padding: 60px 0 0; }
+        .section-wrap + .section-wrap { padding-top: 56px; }
+        .section-header { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 22px; }
+        .section-num-badge { flex-shrink: 0; margin-top: 4px; width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--orange-border); background: var(--orange-bg); display: flex; align-items: center; justify-content: center; font-family: 'Geist Mono', monospace; font-size: 0.67rem; font-weight: 600; color: var(--orange); }
+        .section-eyebrow { font-family: 'Geist Mono', monospace; font-size: 9.5px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 5px; }
+        .section-title { font-family: 'Merriweather', Georgia, serif; font-size: 1.45rem; font-weight: 700; color: var(--black); letter-spacing: -0.018em; line-height: 1.25; margin-bottom: 6px; }
+        .section-desc { font-size: 0.91rem; color: var(--text-secondary); max-width: 680px; line-height: 1.75; }
 
-        .metric-label {
-            font-size: 0.68rem;
-            color: rgba(255,255,255,0.72);
-            line-height: 1.45;
-            font-weight: 400;
-        }
+        /* CARDS */
+        .usecase-card { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: #fff; box-shadow: 0 1px 3px rgba(16,15,15,0.04), 0 4px 16px rgba(16,15,15,0.04); }
+        .usecase-header { padding: 20px 26px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 14px; background: var(--gray-1); }
+        .usecase-icon { display: none; }
+        .usecase-header-text h3 { font-family: 'Merriweather', Georgia, serif; font-size: 0.94rem; font-weight: 700; color: var(--black); margin-bottom: 4px; line-height: 1.35; }
+        .usecase-header-text p { font-family: 'Geist Mono', monospace; font-size: 0.67rem; color: var(--text-muted); letter-spacing: 0.03em; line-height: 1.5; }
 
-        /* ── Section ── */
-        .section-wrap {
-            padding: 52px 0 0;
-        }
-
-        .section-wrap + .section-wrap {
-            padding-top: 48px;
-        }
-
-        .section-eyebrow {
-            font-family: 'Geist Mono', monospace;
-            font-size: 10px;
-            font-weight: 600;
-            color: var(--orange);
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        .section-title {
-            font-family: 'Merriweather', Georgia, serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--black);
-            margin-bottom: 10px;
-            letter-spacing: -0.015em;
-            line-height: 1.25;
-        }
-
-        .section-desc {
-            font-size: 0.92rem;
-            color: var(--text-secondary);
-            max-width: 680px;
-            margin-bottom: 24px;
-            line-height: 1.75;
-        }
-
-        /* ── Use case card ── */
-        .usecase-card {
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            background: var(--white);
-        }
-
-        .usecase-header {
-            padding: 20px 24px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            background: var(--bg-warm);
-        }
-
-        .usecase-icon {
-            width: 42px;
-            height: 42px;
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        .usecase-header-text h3 {
-            font-family: 'Merriweather', Georgia, serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--black);
-            margin-bottom: 3px;
-            line-height: 1.35;
-        }
-
-        .usecase-header-text p {
-            font-family: 'Geist Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            letter-spacing: 0.03em;
-        }
-
-        /* ── Workflow ── */
-        .workflow {
-            padding: 24px 24px 20px;
-            display: flex;
-            gap: 0;
-            background: var(--white);
-        }
-
-        .workflow-step {
-            flex: 1;
-            position: relative;
-            padding-right: 18px;
-        }
-
+        /* WORKFLOW */
+        .workflow { padding: 26px 26px 22px; display: flex; gap: 0; background: #fff; }
+        .workflow-step { flex: 1; position: relative; padding-right: 20px; }
         .workflow-step:last-child { padding-right: 0; }
+        .workflow-step:not(:last-child)::after { content: '\2192'; position: absolute; top: 7px; right: 3px; color: var(--gray-3); font-size: 0.7rem; }
+        .step-num { width: 28px; height: 28px; background: var(--orange-bg); border: 1.5px solid var(--orange-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Geist Mono', monospace; font-size: 0.64rem; font-weight: 600; color: var(--orange); margin-bottom: 11px; }
+        .step-title { font-size: 0.74rem; font-weight: 600; color: var(--black); margin-bottom: 4px; line-height: 1.3; }
+        .step-desc { font-size: 0.67rem; color: var(--text-muted); line-height: 1.55; }
+        /* CAPABILITIES */
+        .divider { height: 1px; background: var(--border); margin: 0 26px; }
 
-        .workflow-step:not(:last-child)::after {
-            content: '→';
-            position: absolute;
-            top: 6px;
-            right: 2px;
-            color: var(--gray-3);
-            font-size: 0.75rem;
-        }
+        /* BENCHMARK TABLE */
+        .bench-table { width: 100%; border-collapse: collapse; margin-top: 18px; font-size: 0.8rem; }
+        .bench-table th { font-family: 'Geist Mono', monospace; font-size: 9px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 14px; text-align: left; border-bottom: 1.5px solid var(--orange-border); background: var(--orange-bg); }
+        .bench-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: middle; }
+        .bench-table tr:last-child td { border-bottom: none; }
+        .bench-table td:first-child { color: var(--text-primary); font-weight: 500; }
+        .bench-val { font-family: 'Merriweather', Georgia, serif; font-size: 1.05rem; font-weight: 700; color: var(--orange); letter-spacing: -0.02em; }
 
-        .step-num {
-            width: 28px;
-            height: 28px;
-            background: var(--orange-bg);
-            border: 1.5px solid var(--orange-light);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Geist Mono', monospace;
-            font-size: 0.68rem;
-            font-weight: 600;
-            color: var(--orange);
-            margin-bottom: 10px;
-        }
+        /* AT A GLANCE TABLE */
+        .glance-section { margin-top: 48px; }
+        .glance-eyebrow { font-family: 'Geist Mono', monospace; font-size: 9.5px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
+        .glance-table { width: 100%; border-collapse: collapse; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; font-size: 0.8rem; }
+        .glance-table th { font-family: 'Geist Mono', monospace; font-size: 9px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 18px; text-align: left; background: var(--gray-1); border-bottom: 1px solid var(--border); }
+        .glance-table td { padding: 12px 18px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: middle; }
+        .glance-table tr:last-child td { border-bottom: none; }
+        .glance-table td:first-child { font-weight: 600; color: var(--black); }
+        .glance-metric { display: inline-block; font-family: 'Geist Mono', monospace; font-size: 0.73rem; font-weight: 600; color: var(--orange); background: var(--orange-bg); border: 1px solid var(--orange-border); border-radius: 5px; padding: 2px 8px; }
 
-        .step-title {
-            font-size: 0.74rem;
-            font-weight: 600;
-            color: var(--black);
-            margin-bottom: 4px;
-            line-height: 1.3;
-        }
+        /* TRUST */
+        .trust-section { margin-top: 52px; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: var(--gray-1); }
+        .trust-row { display: flex; align-items: stretch; }
+        .trust-block { flex: 1; padding: 22px 26px; border-right: 1px solid var(--border); }
+        .trust-block:last-child { border-right: none; }
+        .trust-block:first-child { flex: 1.3; }
+        .trust-block-label { font-family: 'Geist Mono', monospace; font-size: 9px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
+        .trust-stat-group { display: flex; flex-direction: column; gap: 4px; }
+        .trust-stat-num { font-family: 'Merriweather', Georgia, serif; font-size: 1.5rem; font-weight: 700; color: var(--black); letter-spacing: -0.02em; line-height: 1; }
+        .trust-stat-label { font-size: 0.72rem; color: var(--text-muted); }
+        .trust-stats { display: flex; gap: 28px; }
+        .trust-items { display: flex; flex-wrap: wrap; gap: 7px; }
+        .trust-chip { display: inline-flex; align-items: center; gap: 6px; background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 5px 10px; font-size: 0.73rem; color: var(--text-secondary); }
+        .trust-chip-dot { width: 5px; height: 5px; background: var(--orange-light); border-radius: 50%; flex-shrink: 0; }
+        .trust-chip.hl { background: var(--orange-bg); border-color: var(--orange-border); color: var(--orange); font-weight: 600; }
 
-        .step-desc {
-            font-size: 0.68rem;
-            color: var(--text-muted);
-            line-height: 1.55;
-        }
+        /* CTA */
+        .cta-section { margin-top: 40px; border: 1px solid var(--orange-border); border-radius: 14px; padding: 50px 52px; text-align: center; background: linear-gradient(140deg, var(--orange-bg) 0%, #FAF1EE 50%, #fff 100%); position: relative; overflow: hidden; }
+        .cta-section::before { content: ''; position: absolute; top: 0; right: 0; width: 33%; height: 100%; background: repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(170,65,42,0.04) 8px, rgba(170,65,42,0.04) 11px); pointer-events: none; }
+        .cta-section > * { position: relative; z-index: 1; }
+        .cta-eyebrow { font-family: 'Geist Mono', monospace; font-size: 9.5px; font-weight: 500; color: var(--orange); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .cta-eyebrow::before, .cta-eyebrow::after { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--orange-light); }
+        .cta-section h2 { font-family: 'Merriweather', Georgia, serif; font-size: 1.6rem; font-weight: 700; color: var(--black); margin-bottom: 10px; letter-spacing: -0.018em; line-height: 1.28; }
+        .cta-section p { font-size: 0.91rem; color: var(--text-secondary); margin-bottom: 30px; max-width: 460px; margin-left: auto; margin-right: auto; line-height: 1.75; }
 
-        /* ── Capabilities ── */
-        .divider { height: 1px; background: var(--border); margin: 0 24px; }
-
-        .capabilities {
-            padding: 18px 24px 22px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px 32px;
-            background: var(--white);
-        }
-
-        .cap-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-        }
-
-        .cap-check {
-            color: var(--orange);
-            font-weight: 700;
-            font-size: 0.75rem;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        /* ── Trust bar ── */
-        .trust-bar {
-            margin-top: 48px;
-            background: var(--blue);
-            border-radius: 12px;
-            padding: 20px 32px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .trust-group {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .trust-item {
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            font-size: 0.75rem;
-            color: rgba(255,255,255,0.65);
-            font-weight: 400;
-        }
-
-        .trust-dot {
-            width: 5px;
-            height: 5px;
-            background: var(--orange-light);
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .trust-sep {
-            width: 1px;
-            height: 20px;
-            background: rgba(255,255,255,0.15);
-            flex-shrink: 0;
-        }
-
-        /* ── CTA ── */
-        .cta-section {
-            margin-top: 36px;
-            background: var(--bg-warm);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 40px 44px;
-            text-align: center;
-        }
-
-        .cta-eyebrow {
-            font-family: 'Geist Mono', monospace;
-            font-size: 10px;
-            font-weight: 600;
-            color: var(--orange);
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            margin-bottom: 14px;
-        }
-
-        .cta-section h2 {
-            font-family: 'Merriweather', Georgia, serif;
-            font-size: 1.55rem;
-            font-weight: 700;
-            color: var(--black);
-            margin-bottom: 10px;
-            letter-spacing: -0.015em;
-            line-height: 1.3;
-        }
-
-        .cta-section p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 28px;
-            max-width: 480px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.7;
-        }
-
-        .cta-btn {
-            display: inline-block;
-            background: var(--orange);
-            color: var(--white);
-            font-size: 0.87rem;
-            font-weight: 600;
-            padding: 13px 34px;
-            border-radius: 6px;
-            text-decoration: none;
-            letter-spacing: 0.01em;
-            transition: background 0.2s ease, transform 0.15s ease;
-        }
-
-        .cta-btn:hover {
-            background: #913826;
-            transform: translateY(-1px);
-        }
-
-        .cta-contact {
-            margin-top: 14px;
-            font-family: 'Geist Mono', monospace;
-            font-size: 0.73rem;
-            color: var(--text-muted);
-            letter-spacing: 0.03em;
-        }
-
-        /* ── Footer ── */
-        footer {
-            margin-top: 32px;
-            border-top: 1px solid var(--border);
-            padding: 20px 0 28px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .footer-text {
-            font-size: 0.72rem;
-            color: var(--text-muted);
-        }
-
-        .footer-badges {
-            display: flex;
-            gap: 8px;
-        }
-
-        .badge {
-            font-family: 'Geist Mono', monospace;
-            font-size: 0.65rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            background: var(--bg-warm);
-            border: 1px solid var(--border);
-            padding: 3px 8px;
-            border-radius: 4px;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-        }
-
-        /* ── Responsive ── */
+        /* RESPONSIVE */
         @media (max-width: 720px) {
-            .hero h1 { font-size: 1.85rem; }
+            .container { padding: 0 20px; }
+            .hero { padding: 52px 0 44px; }
+            .hero-pp, .hero::after { display: none; }
+            .hero h1 { font-size: 1.9rem; }
             .metrics-inner { grid-template-columns: repeat(3, 1fr); }
-            .workflow { flex-direction: column; gap: 16px; }
+            .metric-cell:nth-child(4), .metric-cell:nth-child(5) { border-top: 1px solid var(--border); }
+            .workflow { flex-direction: column; gap: 18px; }
             .workflow-step { padding-right: 0; }
             .workflow-step:not(:last-child)::after { display: none; }
-            .capabilities { grid-template-columns: 1fr; }
-            .trust-bar { flex-direction: column; align-items: flex-start; gap: 12px; }
-            .trust-sep { display: none; }
-            .cta-section { padding: 28px 24px; }
-            footer { flex-direction: column; gap: 12px; align-items: flex-start; }
+.trust-row { flex-direction: column; }
+            .trust-block { border-right: none; border-bottom: 1px solid var(--border); }
+            .trust-block:last-child { border-bottom: none; }
+            .cta-section { padding: 32px 24px; }
+            .hero-cta-row { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
 <body>
 
-<!-- Header -->
-<header>
-    <div class="container">
-        <div class="header-inner">
-            <div class="logo">
-                <span class="logo-wordmark">Amigo<span>.</span>ai</span>
-            </div>
-            <span class="header-eyebrow">Optometry &amp; Ophthalmology</span>
-        </div>
-    </div>
-</header>
 
-<!-- Hero -->
 <div class="hero">
-    <div class="container">
-        <div class="hero-eyebrow">Clinical AI Agents for Eye Care</div>
-        <h1>Less Administration.<br><em>More Patients.</em></h1>
-        <p class="hero-sub">
-            Amigo deploys AI agents purpose-built for ophthalmology and optometry — automating patient intake, clinical documentation, and billing so your team focuses on care, not paperwork.
-        </p>
+  <div class="hero-logo"><img src="data:image/png;base64,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" alt="Amigo AI"></div>
+  <div class="hero-pp" aria-hidden="true">
+    <div class="pp-col"></div><div class="pp-col"></div><div class="pp-col"></div>
+    <div class="pp-col"></div><div class="pp-col"></div><div class="pp-col"></div>
+    <div class="pp-col"></div><div class="pp-col"></div><div class="pp-col"></div>
+    <div class="pp-col"></div><div class="pp-col"></div><div class="pp-col"></div>
+    <div class="pp-col"></div><div class="pp-col"></div><div class="pp-col"></div>
+    <div class="pp-col"></div><div class="pp-col"></div><div class="pp-col"></div>
+  </div>
+  <div class="container">
+    <div class="hero-eyebrow">Clinical AI Agents for Eye Care</div>
+    <h1>Less Administration.<br><em>More Patients.</em></h1>
+    <p class="hero-sub">Amigo deploys AI agents purpose-built for ophthalmology and optometry. automating patient intake, clinical documentation, and billing so your team focuses on care, not paperwork.</p>
+    <div class="hero-cta-row">
+      <a href="https://meetings.hubspot.com/alaa-mwafy/nick-alaa" class="btn-primary">Schedule a Call &rarr;</a>
+      <span class="hero-footnote">No commitment required</span>
     </div>
+  </div>
 </div>
 
-<!-- Metrics -->
 <div class="metrics-strip">
-    <div class="metrics-inner container" style="padding-left:32px;padding-right:32px;">
-        <div class="metric-cell">
-            <div class="metric-value">35%</div>
-            <div class="metric-label">Reduction in no-shows &amp; late cancellations</div>
-        </div>
-        <div class="metric-cell">
-            <div class="metric-value">8 min</div>
-            <div class="metric-label">Saved per patient on intake prep</div>
-        </div>
-        <div class="metric-cell">
-            <div class="metric-value">6 hrs</div>
-            <div class="metric-label">Admin time returned to your practice daily</div>
-        </div>
-        <div class="metric-cell">
-            <div class="metric-value">1,500+</div>
-            <div class="metric-label">Hours saved per practice annually</div>
-        </div>
-        <div class="metric-cell">
-            <div class="metric-value">+20</div>
-            <div class="metric-label">Additional patients seen per month</div>
-        </div>
-    </div>
+  <div class="metrics-inner container" style="padding-left:36px;padding-right:36px;">
+    <div class="metric-cell"><div class="metric-value">35%</div><div class="metric-label">Reduction in no-shows &amp; late cancellations</div></div>
+    <div class="metric-cell"><div class="metric-value">8 min</div><div class="metric-label">Saved per patient on intake prep</div></div>
+    <div class="metric-cell"><div class="metric-value">6 hrs</div><div class="metric-label">Admin time returned to your practice daily</div></div>
+    <div class="metric-cell"><div class="metric-value">1,500+</div><div class="metric-label">Hours saved per practice annually</div></div>
+    <div class="metric-cell"><div class="metric-value">+20</div><div class="metric-label">Additional patients seen per month</div></div>
+  </div>
 </div>
 
 <div class="container">
 
-    <!-- Use Case 1 -->
-    <div class="section-wrap">
-        <div class="section-eyebrow">Use Case 01</div>
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-num-badge">01</div>
+      <div>
+        <div class="section-eyebrow">Use Case</div>
         <h2 class="section-title">Pre-Visit Intake &amp; Preparation</h2>
-        <p class="section-desc">
-            Amigo's intake agent engages patients before they arrive — capturing clinical history, analyzing referral letters, and delivering a complete summary to the clinician and EHR before the patient walks through the door.
-        </p>
-
-        <div class="usecase-card">
-            <div class="usecase-header">
-                <div class="usecase-icon">👁️</div>
-                <div class="usecase-header-text">
-                    <h3>From Appointment Confirmation to Clinician-Ready — Automatically</h3>
-                    <p>Triggered at booking · Asynchronous patient completion · Supports 100+ languages</p>
-                </div>
-            </div>
-
-            <div class="workflow">
-                <div class="workflow-step">
-                    <div class="step-num">01</div>
-                    <div class="step-title">Patient Engagement</div>
-                    <div class="step-desc">Intake link delivered via SMS or email at appointment confirmation</div>
-                </div>
-                <div class="workflow-step">
-                    <div class="step-num">02</div>
-                    <div class="step-title">History Capture</div>
-                    <div class="step-desc">Chief complaint, medication list, allergies, and ocular disease history collected</div>
-                </div>
-                <div class="workflow-step">
-                    <div class="step-num">03</div>
-                    <div class="step-title">Referral Analysis</div>
-                    <div class="step-desc">Referral letter parsed; key clinical findings and diagnoses extracted</div>
-                </div>
-                <div class="workflow-step">
-                    <div class="step-num">04</div>
-                    <div class="step-title">EHR Push</div>
-                    <div class="step-desc">Completed intake summary delivered to the clinician and EHR pre-visit</div>
-                </div>
-                <div class="workflow-step">
-                    <div class="step-num">05</div>
-                    <div class="step-title">Patient Prep</div>
-                    <div class="step-desc">What to bring, what to expect — reducing no-shows and day-of cancellations</div>
-                </div>
-            </div>
-
-            <div class="divider"></div>
-
-            <div class="capabilities">
-                <div class="cap-item"><span class="cap-check">✓</span> Structured intake: chief complaint, medications, allergies, eye disease history</div>
-                <div class="cap-item"><span class="cap-check">✓</span> Automated referral letter parsing with clinical summary generation</div>
-                <div class="cap-item"><span class="cap-check">✓</span> Completed note pushed directly to Epic, Oracle Health, or Athenahealth</div>
-                <div class="cap-item"><span class="cap-check">✓</span> Patient prep messaging that reduces no-shows and same-day cancellations</div>
-                <div class="cap-item"><span class="cap-check">✓</span> High-risk cases flagged for priority clinician review before arrival</div>
-                <div class="cap-item"><span class="cap-check">✓</span> Front desk staff verify intake — they no longer collect from scratch</div>
-            </div>
-        </div>
+      </div>
     </div>
+    <p class="section-desc">Amigo&#8217;s intake agent collects clinical history, parses referral letters, and pushes a structured summary to the EHR before the patient arrives.</p>
+    <div class="usecase-card">
+      <div class="usecase-header">
+        <div class="usecase-icon">&#128065;&#65039;</div>
+        <div class="usecase-header-text">
+          <h3>Appointment Confirmed to Clinician-Ready, Automatically</h3>
+          <p>Triggered at booking &nbsp;&middot;&nbsp; Asynchronous patient completion &nbsp;&middot;&nbsp; Supports 100+ languages</p>
+        </div>
+      </div>
+      <div class="workflow">
+        <div class="workflow-step"><div class="step-num">01</div><div class="step-title">Patient Engagement</div><div class="step-desc">Intake link delivered via SMS or email at appointment confirmation</div></div>
+        <div class="workflow-step"><div class="step-num">02</div><div class="step-title">History Capture</div><div class="step-desc">Chief complaint, medication list, allergies, and ocular disease history collected</div></div>
+        <div class="workflow-step"><div class="step-num">03</div><div class="step-title">Referral Analysis</div><div class="step-desc">Referral letter parsed; key clinical findings and diagnoses extracted</div></div>
+        <div class="workflow-step"><div class="step-num">04</div><div class="step-title">EHR Push</div><div class="step-desc">Completed intake summary delivered to the clinician and EHR pre-visit</div></div>
+        <div class="workflow-step"><div class="step-num">05</div><div class="step-title">Patient Prep</div><div class="step-desc">Preparation instructions sent to reduce no-shows and same-day cancellations</div></div>
+      </div>
+    </div>
+  </div>
 
-    <!-- Use Case 2 -->
-    <div class="section-wrap">
-        <div class="section-eyebrow">Use Case 02</div>
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-num-badge">02</div>
+      <div>
+        <div class="section-eyebrow">Use Case</div>
         <h2 class="section-title">Medical Scribe &amp; Billing Automation</h2>
-        <p class="section-desc">
-            Amigo's scribe agent attends every encounter in real time — generating structured SOAP notes, ICD-10 diagnoses, and CPT codes as the visit unfolds. Clinicians review and sign. They no longer write.
-        </p>
-
-        <div class="usecase-card">
-            <div class="usecase-header">
-                <div class="usecase-icon">📋</div>
-                <div class="usecase-header-text">
-                    <h3>Documentation That Writes Itself</h3>
-                    <p>Real-time transcription &amp; structuring · ICD-10 + CPT auto-coding · EHR-native delivery</p>
-                </div>
-            </div>
-
-            <div class="workflow">
-                <div class="workflow-step">
-                    <div class="step-num">01</div>
-                    <div class="step-title">Encounter Start</div>
-                    <div class="step-desc">Scribe agent activates at the start of each clinical encounter</div>
-                </div>
-                <div class="workflow-step">
-                    <div class="step-num">02</div>
-                    <div class="step-title">Real-Time Structuring</div>
-                    <div class="step-desc">Conversation transcribed and formatted as a subspecialty-aware SOAP note</div>
-                </div>
-                <div class="workflow-step">
-                    <div class="step-num">03</div>
-                    <div class="step-title">Code Suggestion</div>
-                    <div class="step-desc">ICD-10 diagnoses and CPT procedure codes auto-suggested from clinical context</div>
-                </div>
-                <div class="workflow-step">
-                    <div class="step-num">04</div>
-                    <div class="step-title">Draft Ready</div>
-                    <div class="step-desc">Complete note available for review before the patient leaves the room</div>
-                </div>
-                <div class="workflow-step">
-                    <div class="step-num">05</div>
-                    <div class="step-title">EHR Sign-Off</div>
-                    <div class="step-desc">Approved note pushed to EHR; billing queue updated automatically</div>
-                </div>
-            </div>
-
-            <div class="divider"></div>
-
-            <div class="capabilities">
-                <div class="cap-item"><span class="cap-check">✓</span> Real-time SOAP note generation — subspecialty-aware for eye care workflows</div>
-                <div class="cap-item"><span class="cap-check">✓</span> Automated ICD-10 and CPT code suggestion from encounter context</div>
-                <div class="cap-item"><span class="cap-check">✓</span> Billing documentation complete before end of clinic session</div>
-                <div class="cap-item"><span class="cap-check">✓</span> Reduces provider documentation time by up to 60% per encounter</div>
-                <div class="cap-item"><span class="cap-check">✓</span> Follow-up instructions, referrals, and orders captured automatically</div>
-                <div class="cap-item"><span class="cap-check">✓</span> Clinicians review and sign — they never write from scratch again</div>
-            </div>
-        </div>
+      </div>
     </div>
-
-    <!-- Trust bar -->
-    <div class="trust-bar">
-        <div class="trust-group">
-            <div class="trust-item"><span class="trust-dot"></span>3M+ autonomous patient encounters</div>
-            <div class="trust-item"><span class="trust-dot"></span>Zero safety incidents on record</div>
+    <p class="section-desc">Amigo&#8217;s scribe agent generates SOAP notes, ICD-10 diagnoses, and CPT codes during the encounter. Clinicians review and sign.</p>
+    <div class="usecase-card">
+      <div class="usecase-header">
+        <div class="usecase-icon">&#128203;</div>
+        <div class="usecase-header-text">
+          <h3>Documentation That Writes Itself</h3>
+          <p>Real-time transcription &amp; structuring &nbsp;&middot;&nbsp; ICD-10 + CPT auto-coding &nbsp;&middot;&nbsp; EHR-native delivery</p>
         </div>
-        <div class="trust-sep"></div>
-        <div class="trust-group">
-            <div class="trust-item"><span class="trust-dot"></span>Epic</div>
-            <div class="trust-item"><span class="trust-dot"></span>Oracle Health</div>
-            <div class="trust-item"><span class="trust-dot"></span>Athenahealth</div>
-        </div>
-        <div class="trust-sep"></div>
-        <div class="trust-group">
-            <div class="trust-item"><span class="trust-dot"></span>HIPAA Compliant</div>
-            <div class="trust-item"><span class="trust-dot"></span>SOC 2 Type II</div>
-            <div class="trust-item"><span class="trust-dot"></span>GDPR</div>
-        </div>
+      </div>
+      <div class="workflow">
+        <div class="workflow-step"><div class="step-num">01</div><div class="step-title">Encounter Start</div><div class="step-desc">Scribe agent activates at the start of each clinical encounter</div></div>
+        <div class="workflow-step"><div class="step-num">02</div><div class="step-title">Real-Time Structuring</div><div class="step-desc">Conversation transcribed and formatted as a subspecialty-aware SOAP note</div></div>
+        <div class="workflow-step"><div class="step-num">03</div><div class="step-title">Code Suggestion</div><div class="step-desc">ICD-10 diagnoses and CPT procedure codes auto-suggested from clinical context</div></div>
+        <div class="workflow-step"><div class="step-num">04</div><div class="step-title">Draft Ready</div><div class="step-desc">Complete note available for review before the patient leaves the room</div></div>
+        <div class="workflow-step"><div class="step-num">05</div><div class="step-title">EHR Sign-Off</div><div class="step-desc">Approved note pushed to EHR; billing queue updated automatically</div></div>
+      </div>
     </div>
+  </div>
 
-    <!-- CTA -->
-    <div class="cta-section">
-        <div class="cta-eyebrow">Next Step</div>
-        <h2>See Amigo in Your Practice</h2>
-        <p>A 20-minute conversation is all it takes to map Amigo's agents to your specific workflows and patient population.</p>
-        <a href="mailto:alaa@amigo.ai?subject=Amigo AI — Ophthalmology%2FOptometry Demo Request" class="cta-btn">Schedule a Call</a>
-        <div class="cta-contact">alaa@amigo.ai &nbsp;·&nbsp; amigo.ai</div>
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-num-badge">03</div>
+      <div>
+        <div class="section-eyebrow">Use Case</div>
+        <h2 class="section-title">Post-Surgical Recovery Agent</h2>
+      </div>
     </div>
-
-    <!-- Footer -->
-    <footer>
-        <span class="footer-text">© 2026 Amigo AI &nbsp;·&nbsp; All rights reserved</span>
-        <div class="footer-badges">
-            <span class="badge">HIPAA</span>
-            <span class="badge">SOC 2</span>
-            <span class="badge">GDPR</span>
+    <p class="section-desc">After surgery, patients need consistent guidance on drops and restrictions. Amigo monitors every patient, sends calibrated reminders, and escalates to the care team if warning signs appear.</p>
+    <div class="usecase-card">
+      <div class="usecase-header">
+        <div class="usecase-icon"></div>
+        <div class="usecase-header-text">
+          <h3>Surgery Discharge to Full Recovery, Automatically</h3>
+          <p>Time-specific drop protocols &nbsp;&middot;&nbsp; Daily symptom check-ins &nbsp;&middot;&nbsp; Automated follow-up scheduling</p>
         </div>
-    </footer>
+      </div>
+      <div class="workflow">
+        <div class="workflow-step"><div class="step-num">01</div><div class="step-title">Discharge Briefing</div><div class="step-desc">Recovery instructions and drop schedule delivered via SMS at discharge</div></div>
+        <div class="workflow-step"><div class="step-num">02</div><div class="step-title">Drop Reminders</div><div class="step-desc">Time-specific reminders calibrated to each patient&#8217;s prescribed protocol</div></div>
+        <div class="workflow-step"><div class="step-num">03</div><div class="step-title">Daily Check-In</div><div class="step-desc">Agent checks for warning signs each day; thresholds trigger immediate clinician escalation</div></div>
+        <div class="workflow-step"><div class="step-num">04</div><div class="step-title">Escalation</div><div class="step-desc">Abnormal responses flagged and routed to the care team in real time</div></div>
+        <div class="workflow-step"><div class="step-num">05</div><div class="step-title">Follow-Up Prep</div><div class="step-desc">1-week, 1-month, and 3-month appointments prepped and scheduled automatically</div></div>
+      </div>
+      <div class="divider"></div>
+      <div style="padding: 20px 26px 24px;">
+        <div style="font-family: 'Geist Mono', monospace; font-size: 9px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px;">Outcomes</div>
+        <table class="bench-table">
+          <thead><tr><th>Metric</th><th>Benchmark</th></tr></thead>
+          <tbody>
+            <tr><td>Clinical safety pass rate</td><td><span class="bench-val">100%</span></td></tr>
+            <tr><td>Billable revenue impact</td><td><span class="bench-val">400&times; increase</span></td></tr>
+            <tr><td>Time to go live</td><td><span class="bench-val">6 weeks</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="glance-section">
+    <div class="container">
+      <div class="glance-eyebrow">At a Glance</div>
+      <table class="glance-table">
+        <thead>
+          <tr>
+            <th>Use Case</th>
+            <th>Primary Benefit</th>
+            <th>Key Metric</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Intelligent Intake</td>
+            <td>Faster appointments, better-briefed clinicians</td>
+            <td><span class="glance-metric">30% reduction in visit time</span></td>
+          </tr>
+          <tr>
+            <td>Medical Scribe &amp; Billing</td>
+            <td>Eliminates documentation burden for clinicians</td>
+            <td><span class="glance-metric">60% less documentation time</span></td>
+          </tr>
+          <tr>
+            <td>Post-Surgical Recovery</td>
+            <td>Fewer complications, proactive patient monitoring</td>
+            <td><span class="glance-metric">100% safety pass rate</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="trust-section">
+    <div class="trust-row">
+      <div class="trust-block">
+        <div class="trust-block-label">Platform Scale</div>
+        <div class="trust-stats">
+          <div class="trust-stat-group"><div class="trust-stat-num">3M+</div><div class="trust-stat-label">Autonomous patient encounters</div></div>
+          <div class="trust-stat-group"><div class="trust-stat-num">Zero</div><div class="trust-stat-label">Safety incidents on record</div></div>
+        </div>
+      </div>
+      <div class="trust-block">
+        <div class="trust-block-label">EHR &amp; PM Integrations</div>
+        <div class="trust-items">
+          <span class="trust-chip"><span class="trust-chip-dot"></span>Eyefinity</span>
+          <span class="trust-chip"><span class="trust-chip-dot"></span>RevolutionEHR</span>
+          <span class="trust-chip"><span class="trust-chip-dot"></span>Compulink</span>
+          <span class="trust-chip"><span class="trust-chip-dot"></span>Modernizing Medicine</span>
+          <span class="trust-chip"><span class="trust-chip-dot"></span>Epic</span>
+        </div>
+      </div>
+      <div class="trust-block">
+        <div class="trust-block-label">Compliance</div>
+        <div class="trust-items">
+          <span class="trust-chip hl">HIPAA</span>
+          <span class="trust-chip hl">SOC 2 Type II</span>
+          <span class="trust-chip hl">GDPR</span>
+          <span class="trust-chip hl">BAA Ready</span>
+          <span class="trust-chip hl">TCPA</span>
+          <span class="trust-chip hl">CMS / Medicare</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <div class="cta-eyebrow">Next Step</div>
+    <h2>See Amigo in Your Practice</h2>
+    <p>Book time directly with our team to see how Amigo&#8217;s agents map to your specific workflows and patient population.</p>
+    <a href="https://meetings.hubspot.com/alaa-mwafy/nick-alaa" class="btn-primary">Schedule a Call &rarr;</a>
+  </div>
 
 </div>
 </body>
