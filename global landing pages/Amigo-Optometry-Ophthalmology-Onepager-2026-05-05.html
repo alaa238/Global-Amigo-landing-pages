@@ -53,7 +53,7 @@
 
         /* METRICS */
         .metrics-strip { padding: 0 36px; }
-        .metrics-inner { display: grid; grid-template-columns: repeat(5, 1fr); max-width: 940px; margin: 0 auto; background: var(--gray-1); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+        .metrics-inner { display: grid; grid-template-columns: repeat(4, 1fr); max-width: 940px; margin: 0 auto; background: var(--gray-1); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
         .metric-cell { padding: 28px 16px; text-align: center; border-right: 1px solid var(--border); position: relative; }
         .metric-cell:last-child { border-right: none; }
         .metric-cell::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 28px; height: 2px; background: var(--orange); border-radius: 0 0 2px 2px; }
@@ -150,7 +150,6 @@
             /* Metrics */
             .metrics-strip { padding: 0 18px; }
             .metrics-inner { grid-template-columns: repeat(2, 1fr); border-radius: 12px; }
-            .metric-cell:nth-child(odd):last-child { grid-column: span 2; }
             .metric-cell:nth-child(n+3) { border-top: 1px solid var(--border); }
             .metric-value { font-size: 1.45rem; }
             .metric-label { font-size: 0.65rem; }
@@ -231,7 +230,6 @@
     <div class="metric-cell"><div class="metric-value">35%</div><div class="metric-label">Reduction in no-shows &amp; late cancellations</div></div>
     <div class="metric-cell"><div class="metric-value">8 min</div><div class="metric-label">Saved per patient on intake prep</div></div>
     <div class="metric-cell"><div class="metric-value">6 hrs</div><div class="metric-label">Admin time returned to your practice daily</div></div>
-    <div class="metric-cell"><div class="metric-value">1,500+</div><div class="metric-label">Hours saved per practice annually</div></div>
     <div class="metric-cell"><div class="metric-value">+20</div><div class="metric-label">Additional patients seen per month</div></div>
   </div>
 </div>
