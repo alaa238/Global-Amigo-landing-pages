@@ -132,20 +132,73 @@
 
         /* RESPONSIVE */
         @media (max-width: 720px) {
-            .container { padding: 0 20px; }
-            .hero { padding: 52px 0 44px; }
+            /* Layout */
+            .container { padding: 0 18px; }
+
+            /* Hero */
+            .hero { padding: 72px 0 44px; }
+            .hero-logo { top: 20px; left: 18px; }
+            .hero-logo img { height: 22px; }
             .hero-pp, .hero::after { display: none; }
-            .hero h1 { font-size: 1.9rem; }
-            .metrics-inner { grid-template-columns: repeat(3, 1fr); }
-            .metric-cell:nth-child(4), .metric-cell:nth-child(5) { border-top: 1px solid var(--border); }
-            .workflow { flex-direction: column; gap: 18px; }
+            .hero h1 { font-size: 1.75rem; max-width: 100%; }
+            .hero-eyebrow { font-size: 9px; }
+            .hero-sub { font-size: 0.88rem; }
+            .hero-cta-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .btn-primary { font-size: 0.82rem; padding: 12px 22px; }
+            .no-commit { font-size: 0.72rem; }
+
+            /* Metrics */
+            .metrics-strip { padding: 0 18px; }
+            .metrics-inner { grid-template-columns: repeat(2, 1fr); border-radius: 12px; }
+            .metric-cell:nth-child(odd):last-child { grid-column: span 2; }
+            .metric-cell:nth-child(n+3) { border-top: 1px solid var(--border); }
+            .metric-value { font-size: 1.45rem; }
+            .metric-label { font-size: 0.65rem; }
+
+            /* Sections */
+            .section-wrap { padding: 40px 0 0; }
+            .section-wrap + .section-wrap { padding-top: 36px; }
+            .section-title { font-size: 1.2rem; }
+            .section-desc { font-size: 0.86rem; }
+            .section-num-badge { width: 30px; height: 30px; font-size: 0.6rem; }
+
+            /* Use case cards */
+            .usecase-header { padding: 16px 18px; }
+            .usecase-header-text h3 { font-size: 0.85rem; }
+            .usecase-header-text p { font-size: 0.62rem; }
+
+            /* Workflow */
+            .workflow { flex-direction: column; gap: 14px; padding: 18px 18px 16px; }
             .workflow-step { padding-right: 0; }
             .workflow-step:not(:last-child)::after { display: none; }
-.trust-row { flex-direction: column; }
-            .trust-block { border-right: none; border-bottom: 1px solid var(--border); }
+            .step-title { font-size: 0.72rem; }
+            .step-desc { font-size: 0.65rem; }
+
+            /* Bench table (outcomes) */
+            .bench-table { font-size: 0.75rem; }
+            .bench-table th, .bench-table td { padding: 8px 12px; }
+            .bench-val { font-size: 0.95rem; }
+
+            /* At a glance */
+            .glance-section { margin-top: 32px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .glance-table { min-width: 540px; font-size: 0.75rem; }
+            .glance-table th, .glance-table td { padding: 10px 14px; }
+            .glance-metric { font-size: 0.67rem; }
+
+            /* Trust */
+            .trust-section { margin-top: 32px; }
+            .trust-row { flex-direction: column; }
+            .trust-block { border-right: none; border-bottom: 1px solid var(--border); flex: 1 !important; }
             .trust-block:last-child { border-bottom: none; }
-            .cta-section { padding: 32px 24px; }
-            .hero-cta-row { flex-direction: column; align-items: flex-start; }
+            .trust-block-label { font-size: 8px; }
+            .trust-stat-num { font-size: 1.25rem; }
+            .trust-items { gap: 6px; }
+            .trust-chip { font-size: 0.68rem; padding: 4px 8px; }
+
+            /* CTA */
+            .cta-section { margin-top: 28px; padding: 32px 20px; }
+            .cta-section h2 { font-size: 1.3rem; }
+            .cta-section p { font-size: 0.85rem; }
         }
     </style>
 </head>
